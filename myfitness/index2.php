@@ -1,6 +1,4 @@
 <?php
-session_start();
-session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,15 +57,10 @@ session_destroy();
 			</div>		
 			<div>
 			<div style="float:right; font-size:20px;margin-top:20px;">
-			
-				
-			 
+						 
 				<a href="login.php?logout='1'" class="btn btn-success" >Login</a> 
 				<a href="register.php?logout='1'" class="btn btn-success" >Sign up</a> 
-
-
-			
-			
+				
 			</div>
 			<div id="heading">
 				<a href="#" id="title">My Fitness</a>
@@ -80,26 +73,17 @@ session_destroy();
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container" >
-
-					
+	
 				<a class="brand" href="index2.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
-				
-				
-				
-				
-			
-				<a class="brand" href="contact.php">CONTACT</a>
-				
-				<a class="brand" href="about.php">ABOUT US </a>
-				
-				
+				<a class="brand" href="contact2.php">CONTACT</a>	
+				<a class="brand" href="about.php">ABOUT US </a>	
 				<a class="brand" href="admin.php">ADMIN LOGIN</a>
 				<a class="brand" href="doctor.php">DOCTOR LOGIN</a>
-
-
-				</div>
+				
+			   </div>
 			</div>
 		</div>
+		
 		<div class="span12 well">
 			<!-- Photos slider -->
 			<div id="myCarousel" class="carousel slide" style="width:600px; float:left;margin-bottom:3px; width: 100%; height:50%" >		
@@ -115,13 +99,8 @@ session_destroy();
 				<div class="item"><img alt="pic4" src="images/pic4.jpg" style="width:100%;height:350px;"/> </div>
 
 				<div class="item"><img alt="pic5" src="images/pic5.jpg" style="width:100%;height:350px;"/> </div>
-
-				
-				
-				
-				
-				
-				</div>
+			
+			</div>
 				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 			</div>

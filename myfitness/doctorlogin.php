@@ -1,8 +1,21 @@
 <?php
-session_start();
+	include("connection.php");
+	error_reporting(0);
+
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: login.php");
+	}
 
 ?>
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title>Doctor Login</title>
@@ -126,9 +139,7 @@ session_start();
 	</div>
 			<h3>Welcome To MyFitness!</h3>
 			<h3> Please Click on the Appointments button to View Appointments</h3>
-			<center><h1><a href="viewappoint.php" class="btn btn-success" > View Appointments</a> <br> </center>
-
-			               
+			<center><h1><a href="viewappoint.php" class="btn btn-success" > View Appointments</a> <br> </center>			               
       </div>
 <footer >
 		<div class="f1">
@@ -142,7 +153,7 @@ session_start();
 				<span><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>&nbsp;
 				<span><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter " aria-hidden="true"></i></a></span>&nbsp;
 				<span><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-</p>
+            </p>
 			</div>
 		</div>
 		</footer>	</div>

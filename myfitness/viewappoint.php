@@ -1,6 +1,8 @@
 <?php
 	include("connection.php");
+	error_reporting(0);
 
+	session_start(); 
 ?>
 
 <html>
@@ -60,17 +62,16 @@
 			<div>
 				<div style="float:right; font-size:20px;margin-top:20px;">
 			
-				<?php
+			<?php
 			 if(isset($_SESSION['name']))	
 			 {
 			 echo "<b>Welcome,</b>".$_SESSION['name']."&nbsp;&nbsp;&nbsp;<a href=\"logout.php\" class=\"btn btn-info\">Logout</a>";
 			 }
 			 else
 			 {
-			 ?><br><br><br>
-			     <a href="index2.php?logout='1'" class="btn btn-success" >Logout</a> 
-				
-								
+			 ?>
+			 <br><br><br>
+			     <a href="index2.php?logout='1'" class="btn btn-success" >Logout</a> 				
 			<?php } ?>
 			
 			
@@ -86,45 +87,30 @@
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container" >
-		<a class="brand" href="contact2.php"></a>
+		            <a class="brand" href="contact2.php"></a>
 					<a class="brand" href="contact2.php"></a>
 					<a class="brand" href="contact2.php"></a>
 					<a class="brand" href="contact2.php"></a><a class="brand" href="contact2.php"></a>
-				<a class="brand" href="doctorlogin.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
-				
-				
-				
-				<a class="brand" href="contact2.php">CONTACT</a>
-				
-				<a class="brand" href="about2.php">ABOUT US </a>
-				
-
-
+				    <a class="brand" href="doctorlogin.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
+				    <a class="brand" href="contact2.php">CONTACT</a>
+				    <a class="brand" href="about2.php">ABOUT US </a>
 				</div>
 			</div>
 		</div>
 
 <?php  if (isset($_SESSION['username'])) : ?>
-			<h1><p>Hello <strong><?php echo $_SESSION['username']; ?></strong></p></h1>
-			
+			<h1><p>Hello <strong><?php echo $_SESSION['username']; ?></strong></p></h1>			
 		<?php endif ?>
-
-
-
-
-
-
 <?php
 
 include("connection.php");
 error_reporting(0);
 
 $name= $_SESSION['username']; 
+$connect = mysqli_connect("localhost", "root", "", "mydatabase");
 $query="SELECT * FROM appointment where Name='$name'";
 $data=mysqli_query($conn,$query);
 $total=mysqli_num_rows($data);
-
-
 
 
 if($total !=0)
@@ -139,8 +125,6 @@ if($total !=0)
 			<th> Name of Patient </th>
 			<th> Location </th>
 			<th> Contact Number of Patient </th>
-
-
 		</tr>
 
 

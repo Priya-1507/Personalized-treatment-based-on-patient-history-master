@@ -100,10 +100,7 @@
 				<div class="container" >
 				<a class="brand" href="index.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
 				
-				
-				
 				<a class="brand" href="contact2.php">CONTACT</a>
-				
 				<a class="brand" href="about2.php">ABOUT US </a>
 				<a class="brand" href="display.php" >ANALYSIS HISTORY</a>
 				<a class="brand" href="excerise.php">EXERCISE PLAN</a>
@@ -122,10 +119,7 @@
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="viewbooking.php">VIEW APPOINTMENT </a>
-
-
-				
-				</div>
+			</div>
 			</div>
 		</div>
 		

@@ -1,17 +1,22 @@
-<?php
-	include("connection.php");
-	error_reporting(0);
-
+<?php 
 	session_start(); 
 
-	
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: login.php");
+	}
 
 ?>
-
+<!DOCTYPE html>
 <html>
 <head>
-<title> Excerise</title>
-<title>Home</title>
+	<title>Visualization of Input</title>
 	<link rel="shortcut icon" href="images/favicon.png"></link>
 	<meta  http-equiv="content-Type" content="text/html" charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,user-scalable=0"/>
@@ -52,18 +57,18 @@
     	} 
        </style>
 	
-
+	
 </head>
 <body>
 
-<div class="wrap">
+	<div class="wrap">
 		<!-- Header -->
 		<div class="header">
 			<div style="float:left;width:150px;">
 				<img src="images/logo2.jpg"/>
 			</div>		
 			<div>
-				<div style="float:right; font-size:20px;margin-top:20px;">
+			<div style="float:right; font-size:20px;margin-top:20px;">
 			
 				<?php
 			 if(isset($_SESSION['name']))	
@@ -76,7 +81,8 @@
 			     <a href="index2.php?logout='1'" class="btn btn-success" >Logout</a> 
 				
 								
-			<?php } ?>
+			<?php }
+			 ?>
 			
 			
 			</div>
@@ -99,13 +105,13 @@
 				
 				<a class="brand" href="about2.php">ABOUT US </a>
 				<a class="brand" href="display.php" >ANALYSIS HISTORY</a>
-				<a class="brand" href="excerise.php">EXERCISE PLAN</a>
+				<a class="brand" href="excerise.php">EXCERISE PLAN</a>
 
 				
 				<a class="brand" href="diet.php">DIETPLAN</a>
 				<a class="brand" href="visualization.php">VISUALIZATION</a>
 				<a class="brand" href="viewdoc2.php">VIEW DOCTOR LIST </a>
-				<a class="brand" href="booking.php">BOOK AN APPOINTMENT </a>
+				<a class="brand" href="booking.php">BOOK AN APPONTMENT </a>
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="booking.php"> </a>
@@ -115,92 +121,83 @@
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="viewbooking.php">VIEW APPOINTMENT </a>
+				
 				</div>
 			</div>
 		</div>
-	
-
-
-<?php  if (isset($_SESSION['username'])) : ?>
-			<h1><p>Hello <strong><?php echo $_SESSION['username']; ?></strong></p> </h1>
-			
-		<?php endif ?> 
-
-
-
-
-<?php
-
-include("connection.php");
-error_reporting(0);
-
-$name= $_SESSION['username']; 
-$query="SELECT * FROM exercise where username='$name'";
-$data=mysqli_query($conn,$query);
-$total=mysqli_num_rows($data);
-
-
-
-
-if($total !=0)
-{
-	?>
-	<h1> Your Exercise as per Your Analysis form is as follows:</h1> 
-	<table border='3' cellpadding='0' cellspacing="0" >
-           <tr>
-			
-			<th>Time</th>
-			<th>Exercise1</th>
-			<th>Exercise2</th>
-			<th>Exercise3</th>
-			<th>Exercise4</th>
-			<th>Exercise5</th>
-			<th>Exercise6</th>
-			<th>Exercise7</th>
-			<th>Exercise8</th>
-			<th>Exercise9</th>
-			<th>Exercise10</th>
-			<th>Exercise11</th>
-			<th>Calories Burned</th>
-		</tr>
-
-<?php 
-	while($result=mysqli_fetch_assoc($data))
-	{
-		echo "<tr>
-			
-			<td>".$result['time']."</td>
-			<td>".$result['e1']."</td>
-			<td>".$result['e2']."</td>
-			<td>".$result['e3']."</td>
-			<td>".$result['e4']."</td>
-			<td>".$result['e5']."</td>
-			<td>".$result['e6']."</td>
-			<td>".$result['e7']."</td>
-			<td>".$result['e8']."</td>
-			<td>".$result['e9']."</td>
-			<td>".$result['e10']."</td>
-			<td>".$result['e11']."</td>
-			<td>".$result['total']."</td>
 		
-		</tr>";
-	}
-}
-?>
-<center>
-<h1>
+		<div>
+			
+			<div class="content">
+		<h1 style="display: block;">
+		<!-- notification message -->
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
 
-<?php 
-if($total ==0)
-{
-	echo "No Record found";
-	echo "<br>";
-	echo "Please fill the Analysis Form";
-	   echo "<center><h1><a href='Analysis.php?logout='1'' class='btn btn-success' > Analysis Form</a> <br> </center>";
-}
+		<!-- logged in user information -->
+		<?php  if (isset($_SESSION['username'])) : ?>
+			<p>Hello <strong><?php echo $_SESSION['username']; ?></strong></p>
 
-?>
-</h1></center>
-</div>
+<p align="right"><a href="visualization.php" class="btn btn-success" >Back</a> </p>
+
+			
+		<?php endif ?>
+	</div>
+			<h3>Click on the respective buttons to see the Visualization. 
+			<br>
+			<center>		
+			<!--<a href="vage.php" class="btn btn-success" >Age</a> -->
+
+			<a href="vheight.php" class="btn btn-success" >Height</a> 
+
+			<a href="vweight.php" class="btn btn-success" >Weight</a> 
+
+			<a href="vinsulin1.php" class="btn btn-success" >Insulin Before Meal</a>
+
+			<a href="vinsulin2.php" class="btn btn-success" >Insulin After Meal</a>
+
+			<a href="vglucose1.php" class="btn btn-success" >Glucose Before Meal</a>
+
+			<a href="vglucose2.php" class="btn btn-success" >Glucose After Meal</a>    
+			
+			<a href="vbp1.php" class="btn btn-success" >Blood Pressure Systolic</a>
+
+			<a href="vbp2.php" class="btn btn-success" >Blood Pressure Distolic</a>
+
+			<a href="va1c.php" class="btn btn-success" >A1C Test</a>
+
+			<a href="vogtt.php" class="btn btn-success" >OGTT Test</a>
+
+		  </center> </h3>
+               
+
+
+      </div>
+<footer >
+		<div class="f1">
+			<div style="float:left;">
+			<p class="text-right text-info">  &copy; 2021  My Fitness</p>
+			</div>
+			<div style="float:right;">
+			<p class="text-right text-info">
+				<span><a style="border-right: 2px solid " href="Admin/adminlogin.php" target="_blank"><b>Admin</b>&nbsp;&nbsp;</a></span>
+			 Follow On:
+				<span><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>&nbsp;
+				<span><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter " aria-hidden="true"></i></a></span>&nbsp;
+				<span><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+</p>
+			</div>
+		</div>
+		</footer>	</div>
+	
+		
 </body>
 </html>

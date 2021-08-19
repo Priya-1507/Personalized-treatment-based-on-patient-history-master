@@ -115,40 +115,21 @@
 					<a class="brand" href="contact.php"></a>
 					<a class="brand" href="contact.php"></a>
 					<a class="brand" href="contact.php"></a>
-						<a class="brand" href="contact.php"></a>
+					<a class="brand" href="contact.php"></a>
 					<a class="brand" href="contact.php"></a>
 					
 
 				<a class="brand" href="index2.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
-				
-				
-				
-				
-			
-				<a class="brand" href="contact.php">CONTACT</a>
-				
-				<a class="brand" href="about.php">ABOUT US </a>
-				
-				
-			<a class="brand" href="admin.php">ADMIN LOGIN</a>
+				<a class="brand" href="contact.php">CONTACT</a>	
+				<a class="brand" href="about.php">ABOUT US </a>	
+			    <a class="brand" href="admin.php">ADMIN LOGIN</a>
 				<a class="brand" href="doctor.php">DOCTOR LOGIN</a>
-
-				
+		
 				</div>
 			</div>
 		</div>
  
- 
- 
-
-
-
 	<div class="header">
-
-
-
-
-
 		<h2>Admin Login</h2>
 	</div>
 

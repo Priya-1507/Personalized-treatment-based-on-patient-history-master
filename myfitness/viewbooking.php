@@ -3,9 +3,6 @@
 	error_reporting(0);
 
 	session_start(); 
-
-	
-
 ?>
 
 <html>
@@ -65,17 +62,16 @@
 			<div>
 				<div style="float:right; font-size:20px;margin-top:20px;">
 			
-				<?php
+		<?php
 			 if(isset($_SESSION['name']))	
 			 {
 			 echo "<b>Welcome,</b>".$_SESSION['name']."&nbsp;&nbsp;&nbsp;<a href=\"logout.php\" class=\"btn btn-info\">Logout</a>";
 			 }
 			 else
 			 {
-			 ?><br><br><br>
-			     <a href="index2.php?logout='1'" class="btn btn-success" >Logout</a> 
-				
-								
+			?>
+			<br><br><br>
+			     <a href="index2.php?logout='1'" class="btn btn-success" >Logout</a> 						
 			<?php } ?>
 			
 			
@@ -93,11 +89,8 @@
 				<div class="container" >
 			<a class="brand" href="index.php" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a>
 				
-				
-				
-				<a class="brand" href="contact2.php">CONTACT</a>
-				
-				<a class="brand" href="about2.php">ABOUT US </a>
+				<a class="brand" href="contact.php">CONTACT</a>
+				<a class="brand" href="about.php">ABOUT US </a>
 				<a class="brand" href="display.php" >ANALYSIS HISTORY</a>
 				<a class="brand" href="excerise.php">EXERCISE PLAN</a>
 
@@ -116,7 +109,6 @@
 				<a class="brand" href="booking.php"> </a>
 				<a class="brand" href="viewbooking.php">VIEW APPOINTMENT </a>
 
-
 				</div>
 			</div>
 		</div>
@@ -124,25 +116,16 @@
 <?php  if (isset($_SESSION['username'])) : ?>
 			<h1><p>Hello <strong><?php echo $_SESSION['username']; ?></strong></p></h1>
 			
-		<?php endif ?>
-
-
-
-
-
-
+        <?php endif ?>
 <?php
 
-include("connection.php");
-error_reporting(0);
+  include("connection.php");
+  error_reporting(0);
 
-$name= $_SESSION['username']; 
-$query="SELECT * FROM appointment where username='$name'";
-$data=mysqli_query($conn,$query);
-$total=mysqli_num_rows($data);
-
-
-
+  $name= $_SESSION['username']; 
+  $query="SELECT * FROM appointment where username='$name'";
+  $data=mysqli_query($conn,$query);
+  $total=mysqli_num_rows($data);
 
 if($total !=0)
 {
@@ -151,20 +134,14 @@ if($total !=0)
 
 	<table border='5' cellpadding='5' cellspacing="5" >
 		<tr>
-			
 			<th> Time of Booking </th>
 			<th> Name of Doctor </th>
 			<th> Date of Appointment </th>
 			<th> Time of Appointment </th>
 			<th> Location</th>
-
 		</tr>
 
-
-
-
-
-	<?php 
+<?php 
 	while($result=mysqli_fetch_assoc($data))
 	{
 		echo "<tr>
